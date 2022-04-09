@@ -30,12 +30,11 @@ class HdPlay(ResolveUrl):
         if response.status_code == 200:
             html = response.content.decode("utf-8")
             # capture everything, regardless of single or double quotes
-            match = re.search(r'var\s+video_url\s*=\s*"([^\\"]+)"', html)
+            match = re.search(r'var\svideo_url\s?=\s?"(.+?)";', html)            
             if match:
                 video_url = 'http://' + host + match.group(1)
                 return video_url + helpers.append_headers(self.headers)
             xbmc.log(f"html: {html}", xbmc.LOGERROR)
-
 
         raise ResolverError(f"Unable to resolve url in hdplay: {response}")
 
