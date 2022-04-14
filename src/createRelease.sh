@@ -25,5 +25,3 @@ pushd ../plugin.video.icdrama/
 popd
 
 md5 -q ../addons.xml > ../addons.xml.md5
-
-
